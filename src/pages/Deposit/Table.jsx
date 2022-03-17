@@ -19,14 +19,17 @@ export default function Example() {
 			.then((data) => setMoney(data));
 	}, []);
 
-	const HandleDb = () => {
+	const HandleDb = (e) => {
 		const name = nameRef.current.value;
 		const email = emailRef.current.value;
 		const address = addressRef.current.value;
 		const amount = amountRef.current.value;
 		const balance = balanceRef.current.value;
-		const newBalance = parseInt(amount) + parseInt(balance);
-		const depositData = { name, email, address, newBalance };
+		const newBalance = parseFloat(amount) + parseFloat(balance);
+		const updatedBalance = (balance * 1) / 100;
+		const upBalance = parseFloat(balance) + parseFloat(updatedBalance);
+		const depositData = { name, email, address, newBalance, upBalance };
+		console.log(depositData);
 
 		fetch(`https://dry-peak-78703.herokuapp.com/deposit/${email}`, {
 			method: "PUT",
@@ -42,11 +45,12 @@ export default function Example() {
 					history.push("/home");
 				}
 			});
+		e.preventDefault();
 	};
 
 	return (
 		<div className='flex flex-col mt-8 md:max-w-3xl'>
-			<form>
+			<form onSubmit={HandleDb}>
 				<div className='-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8'>
 					<div className='py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8'>
 						<div className='shadow overflow-hidden border-b border-gray-200 sm:rounded-lg'>
@@ -103,7 +107,7 @@ export default function Example() {
 										</td>
 										<td className='px-6 py-4 whitespace-nowrap'>
 											<input
-												className='border-2 h-12 border-slate-300'
+												className='border-2 w-56 px-1 h-12 border-slate-300'
 												type='text'
 												defaultValue={user.displayName}
 												name='name'
@@ -124,7 +128,7 @@ export default function Example() {
 										</td>
 										<td className='px-6 py-4 whitespace-nowrap'>
 											<input
-												className='border-2 h-12 border-slate-300'
+												className='border-2 h-12 w-56 px-1 border-slate-300'
 												type='email'
 												defaultValue={user.email}
 												name='email'
@@ -154,7 +158,8 @@ export default function Example() {
 												.map((money) =>
 													money.walletAddress ? (
 														<input
-															className='border-2 p-3 w-56 h-12 border-slate-300'
+															key={money.email}
+															className='border-2 p-3 w-56 px-1 h-12 border-slate-300'
 															type='text'
 															defaultValue={money.walletAddress}
 															name='address'
@@ -163,7 +168,8 @@ export default function Example() {
 														/>
 													) : (
 														<input
-															className='border-2 p-3 w-56 h-12 border-slate-300'
+															key={money.email}
+															className='border-2 p-3 w-56 px-1 h-12 border-slate-300'
 															type='text'
 															name='address'
 															defaultValue='Enter your wallet address'
@@ -187,7 +193,7 @@ export default function Example() {
 										</td>
 										<td className='px-6 py-4 whitespace-nowrap'>
 											<input
-												className='border-2 h-12 border-slate-300'
+												className='border-2 h-12 w-56 px-1 border-slate-300'
 												type='text'
 												placeholder='Deposit Amount'
 												name='amount'
@@ -213,7 +219,8 @@ export default function Example() {
 												.map((money) =>
 													money.balance ? (
 														<input
-															className='border-2 h-12 border-slate-300'
+															key={money.email}
+															className='border-2 w-56 px-1 h-12 border-slate-300'
 															type='text'
 															name='balance'
 															defaultValue={money.balance}
@@ -222,7 +229,8 @@ export default function Example() {
 														/>
 													) : (
 														<input
-															className='border-2 h-12 border-slate-300'
+															key={money.email}
+															className='border-2 w-56 px-1 h-12 border-slate-300'
 															type='text'
 															name='balance'
 															defaultValue='0'
@@ -243,10 +251,11 @@ export default function Example() {
 						</div>
 					</div>
 				</div>
-				<button onClick={HandleDb}>
+				<button>
 					<input
 						className='bg-black text-white w-28 mt-4 ml-5 px-3 py-2 font-header font-bold rounded-lg cursor-pointer focus:bg-white focus:border-black focus:text-black'
 						value='DEPOSIT'
+						type='submit'
 					/>
 				</button>
 			</form>

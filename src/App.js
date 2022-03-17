@@ -12,6 +12,7 @@ import BankCard from "./pages/Account/BankCard";
 import WalletAddress from "./pages/Account/WalletAddress";
 import PrivateRoute from "./components/PrivateRoute";
 import Signup from "./pages/Registration/Signup";
+import Dashboard from "./pages/Dashboard/Dashboard";
 
 function App() {
 	return (
@@ -50,6 +51,9 @@ function App() {
 					<Switch>
 						<PrivateRoute exact path='/account'>
 							<Account />
+						</PrivateRoute>
+						<PrivateRoute exact path='/dashboard'>
+							<Dashboard />
 						</PrivateRoute>
 					</Switch>
 					<Switch>

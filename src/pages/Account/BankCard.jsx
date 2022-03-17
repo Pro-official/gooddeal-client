@@ -14,7 +14,7 @@ const BankCard = () => {
 		const email = emailRef.current.value;
 		const Card = { bankCard, email };
 
-		fetch(`http://localhost:5000/card/${email}`, {
+		fetch(`https://dry-peak-78703.herokuapp.com/card/${email}`, {
 			method: "PUT",
 			headers: {
 				"content-type": "application/json",

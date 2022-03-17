@@ -14,7 +14,7 @@ const WalletAddress = () => {
 		const email = emailRef.current.value;
 		const newWallet = { wallet, email };
 
-		fetch(`http://localhost:5000/wallet/${email}`, {
+		fetch(`https://dry-peak-78703.herokuapp.com/wallet/${email}`, {
 			method: "PUT",
 			headers: {
 				"content-type": "application/json",

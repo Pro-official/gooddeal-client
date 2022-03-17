@@ -1,35 +1,50 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import Navigation from "../../components/Navigation";
 import useAuth from "../../Hooks/useAuth";
 
 const FundPassword = () => {
 	const { user } = useAuth();
+	const [pass, setPass] = useState([]);
 	const fpasswordRef = useRef();
+	const fpasswordRef2 = useRef();
+	const fpassPrev = useRef();
 	const emailRef = useRef();
 	const history = useHistory();
 
+	useEffect(() => {
+		fetch(`https://dry-peak-78703.herokuapp.com/users`)
+			.then((res) => res.json())
+			.then((data) => setPass(data));
+	}, []);
+
 	const HandlePass = () => {
 		const fundPass = fpasswordRef.current.value;
+		const fundPass2 = fpassPrev.current.value;
+		const fundPass3 = fpasswordRef2.current.value;
+		console.log(fundPass2);
 		const email = emailRef.current.value;
 		const fundPassword = { fundPass, email };
 		// console.log(depositData);
 
-		fetch(`http://localhost:5000/fpass/${email}`, {
-			method: "PUT",
-			headers: {
-				"content-type": "application/json",
-			},
-			body: JSON.stringify(fundPassword),
-		})
-			.then((res) => res.json())
-			.then((data) => {
-				if (data.modifiedCount) {
-					alert("Fund Password Created");
-					// e.target.reset();
-					history.push("/account");
-				}
-			});
+		if (fundPass2 === fundPass3) {
+			console.log("Matched");
+			fetch(`https://dry-peak-78703.herokuapp.com/fpass/${email}`, {
+				method: "PUT",
+				headers: {
+					"content-type": "application/json",
+				},
+				body: JSON.stringify(fundPassword),
+			})
+				.then((res) => res.json())
+				.then((data) => {
+					if (data.modifiedCount) {
+						alert("Fund Password Added successfully");
+						// e.target.reset();
+						history.push("/account");
+					}
+				});
+		}
 	};
 
 	return (
@@ -71,19 +86,60 @@ const FundPassword = () => {
 									/>
 								</div>
 							</div>
-							<div className='w-full'>
-								<div className=' relative '>
-									<input
-										type='password'
-										id='search-form-name'
-										className=' rounded-lg border-transparent flex-1 appearance-none border-2 border-purple-600 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent'
-										placeholder='Fund Password'
-										required
-										name='password'
-										ref={fpasswordRef}
-									/>
-								</div>
-							</div>
+							{pass
+								.filter((pass) => pass.email === user.email)
+								.map((pass) =>
+									pass.fundPass ? (
+										<>
+											<div className='w-full'>
+												<div className=' relative '>
+													<input
+														type='password'
+														id='search-form-name'
+														className=' rounded-lg border-transparent flex-1 appearance-none border-2 border-purple-600 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent'
+														placeholder='Previous Fund Password'
+														required
+														name='password'
+														ref={fpasswordRef2}
+													/>
+												</div>
+												<input
+													className='hidden'
+													type='text'
+													ref={fpassPrev}
+													defaultValue={pass.fundPass}
+												/>
+											</div>
+											<div className='w-full'>
+												<div className=' relative '>
+													<input
+														type='password'
+														id='search-form-name'
+														className=' rounded-lg border-transparent flex-1 appearance-none border-2 border-purple-600 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent'
+														placeholder='Fund Password'
+														required
+														name='password'
+														ref={fpasswordRef}
+													/>
+												</div>
+											</div>
+										</>
+									) : (
+										<div className='w-full'>
+											<div className=' relative '>
+												<input
+													type='password'
+													id='search-form-name'
+													className=' rounded-lg border-transparent flex-1 appearance-none border-2 border-purple-600 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent'
+													placeholder='Create Fund Password'
+													required
+													name='password'
+													ref={fpasswordRef}
+												/>
+											</div>
+										</div>
+									)
+								)}
 							<div>
 								<span className='block w-full rounded-md shadow-sm'>
 									<button

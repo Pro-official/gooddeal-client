@@ -20,7 +20,7 @@ export default function WithdrawTable() {
 	}
 
 	useEffect(() => {
-		fetch("http://localhost:5000/users")
+		fetch("https://dry-peak-78703.herokuapp.com/users")
 			.then((res) => res.json())
 			.then((data) => setMoney(data));
 	}, []);
@@ -34,11 +34,9 @@ export default function WithdrawTable() {
 		const percentageAmount = (amount * 20) / 100;
 		const newAmount = parseFloat(amount) - parseFloat(percentageAmount);
 		const newBalance = parseFloat(balance) - parseFloat(newAmount);
-
 		const WithdrawData = { name, email, address, newBalance };
-		// console.log(WithdrawData);
 
-		fetch(`http://localhost:5000/deposit/${email}`, {
+		fetch(`https://dry-peak-78703.herokuapp.com/withdraw/${email}`, {
 			method: "PUT",
 			headers: {
 				"content-type": "application/json",
