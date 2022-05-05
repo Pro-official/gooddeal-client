@@ -10,7 +10,7 @@ import {
 	//   getIdToken,
 	signOut,
 } from "firebase/auth";
-import initializeAuthentication from "../Firebase/firebase.init";
+import initializeAuthentication from "./../Firebase/firebase.init";
 
 // initialize firebase app
 initializeAuthentication();
@@ -40,7 +40,7 @@ const useFirebase = () => {
 				})
 					.then(() => {})
 					.catch((error) => {});
-				history.replace("/home");
+				history.replace("/");
 			})
 			.catch((error) => {
 				setAuthError(error.message);
@@ -53,7 +53,7 @@ const useFirebase = () => {
 		setIsLoading(true);
 		signInWithEmailAndPassword(auth, email, password)
 			.then((userCredential) => {
-				const destination = location?.state?.from || "/home";
+				const destination = location?.state?.from || "/";
 				history.replace(destination);
 				setAuthError("");
 			})
@@ -70,7 +70,7 @@ const useFirebase = () => {
 				const user = result.user;
 				saveUser(user.email, user.displayName, "PUT");
 				setAuthError("");
-				const destination = location?.state?.from || "/home";
+				const destination = location?.state?.from || "/";
 				history.replace(destination);
 			})
 			.catch((error) => {

@@ -40,19 +40,20 @@ const Withdraw = () => {
 						</svg>{" "}
 						<span className='font-bold font-title text-gray-500'>VIRTUAL</span>
 					</h1>
-					<h1 className='text-xl font-semibold mt-3 md:flex md:items-center'>
+					{/* <h1 className='text-xl font-semibold mt-3 md:flex md:items-center'>
 						<span className='underline text-gray-500 decoration-sky-500 underline-offset-2'>
 							Withdraw Method:
 						</span>
 						<p className='text-gray-500'>
 							<input
+								required
 								type='checkbox'
 								value='USDT-TRC20'
 								class='default:ring-2 ml-4 w-7 h-4'
 							/>{" "}
 							USDT-TRC20
 						</p>
-					</h1>
+					</h1> */}
 					<WithdrawTable />
 				</div>
 			</div>

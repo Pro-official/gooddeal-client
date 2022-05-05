@@ -30,7 +30,14 @@ const solutions = [
 
 export default function Navigation({ handleClick }) {
 	const { user, logout } = useAuth();
-	// console.log(user);
+	// const { admins, setAdmins } = useState([]);
+	// useEffect(() => {
+	// 	fetch(`https://dry-peak-78703.herokuapp.com/users`)
+	// 		.then((res) => res.json())
+	// 		.then((data) => {
+	// 			setAdmins(data);
+	// 		});
+	// }, []);
 
 	const handleLogout = () => {
 		logout();
@@ -99,12 +106,6 @@ export default function Navigation({ handleClick }) {
 							SIGN UP
 						</Link>
 					)}
-					{/* <Link
-						to='/signup'
-						className='text-base font-links font-bold mt-2 mr-1 hover:text-blue-500 hover:underline focus:text-black underline-offset-4'
-					>
-						SIGN UP
-					</Link> */}
 				</Popover.Group>
 				<div className='mr-4 my-2 md:hidden'>
 					<Popover.Button>

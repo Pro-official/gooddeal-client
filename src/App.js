@@ -13,6 +13,8 @@ import WalletAddress from "./pages/Account/WalletAddress";
 import PrivateRoute from "./components/PrivateRoute";
 import Signup from "./pages/Registration/Signup";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import ApproveWithdraw from "./pages/Approve/ApproveWithdraw";
+import ApproveDeposit from "./pages/Approve/ApproveDeposit";
 
 function App() {
 	return (
@@ -32,6 +34,12 @@ function App() {
 					</Switch>
 					<Switch>
 						<Route exact path='/login' component={Signin} />
+					</Switch>
+					<Switch>
+						<Route exact path='/approve-withdraw' component={ApproveWithdraw} />
+					</Switch>
+					<Switch>
+						<Route exact path='/approve-deposit' component={ApproveDeposit} />
 					</Switch>
 					<Switch>
 						<PrivateRoute exact path='/transfer'>

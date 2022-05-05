@@ -18,16 +18,16 @@ const Deposite = () => {
 		<>
 			<Navigation />
 			<div className='pt-9 mt-2 bg-white'>
-				<h1 className='text-3xl md:text-4xl font-bold font-header'>
+				<h1 className='text-xl md:text-3xl md:text-4xl font-bold font-header'>
 					Deposit Your <Span>Money</Span>
 				</h1>
-				<div className='max-w-7xl mx-auto mt-14 p-10 text-left shadow-xl pb-10'>
-					<h1 className='text-xl font-semibold md:flex md:items-center'>
+				<div className='max-w-7xl mx-auto mt-14 p-10 md:text-left text-center shadow-xl '>
+					<h1 className='text-base md:text-xl font-semibold md:flex md:items-center'>
 						<span className='underline text-gray-500 decoration-sky-500 underline-offset-2'>
 							Payment Method:
 						</span>{" "}
 						<svg
-							className='w-10 h-10 ml-10 mr-2'
+							className='w-10 h-10 hidden md:ml-10 nd:mr-2'
 							fill='currentColor'
 							viewBox='0 0 20 20'
 							xmlns='http://www.w3.org/2000/svg'
@@ -39,19 +39,6 @@ const Deposite = () => {
 							/>
 						</svg>{" "}
 						<span className='font-bold font-title text-gray-500'>VIRTUAL</span>
-					</h1>
-					<h1 className='text-xl font-semibold mt-3 md:flex md:items-center'>
-						<span className='underline text-gray-500 decoration-sky-500 underline-offset-2'>
-							Deposit Method:
-						</span>
-						<p className='text-gray-500'>
-							<input
-								type='checkbox'
-								value='USDT-TRC20'
-								className='default:ring-2 ml-4 w-7 h-4'
-							/>{" "}
-							USDT-TRC20
-						</p>
 					</h1>
 					<Table />
 				</div>
