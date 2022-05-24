@@ -14,9 +14,8 @@ export default function WithdrawTable() {
   const addressRef = useRef();
   const amountRef = useRef();
   const balanceRef = useRef();
-  const typeRef = useRef();
 
-  const [state, handleSubmit] = useForm("mnqwbbez");
+  const [state, handleSubmit] = useForm("mgedllgv");
   if (state.succeeded) {
     history.push("/home");
   }
@@ -30,54 +29,50 @@ export default function WithdrawTable() {
   return (
     <div className="flex flex-col mt-8 md:max-w-3xl">
       <form
-        action="https://formspree.io/f/mnqwbbez"
-        method="post"
         onSubmit={handleSubmit}
       >
-        <h1 className="text-xl -mt-4 mb-2 font-semibold md:flex md:items-center">
-          <span className="underline text-gray-500 decoration-sky-500 underline-offset-2">
-            Deposit Method:
+        <h1 className="text-xl -mt-4 mb-2 font-semibold md:flex text-center items-center">
+          <span className="underline text-base text-gray-500 decoration-sky-500 underline-offset-2">
+            Withdraw Method:
           </span>
-          <p className="text-gray-500">
+          <p className="text-gray-500 text-base mt-2 md:ml-1 -ml-6">
             <input
               type="checkbox"
-              defaultValue="USDT-TRC20"
-              className=" ml-4 w-7 h-4"
-              ref={typeRef}
-              defaultChecked={true}
-              name="type"
+              value="USDT-TRC20"
+              className="default:ring-2 ml-4 w-7 h-4"
+              required
             />{" "}
             USDT-TRC20
           </p>
         </h1>
-        <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8 md:block">
           <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
             <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
               <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
+                <thead className="bg-gray-50 hidden md:block">
                   <tr>
                     <th
                       scope="col"
                       className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                     >
-                      Min. Withdrawe
+                      Min. Withdraw
                     </th>
                     <th
                       scope="col"
                       className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                     >
-                      Max. Withdrawe
+                      Max. Withdraw
                     </th>
                     <th
                       scope="col"
                       className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                     >
-                      Withdrawe Countdown
+                      Withdraw Countdown
                     </th>
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                  <tr>
+                  <tr className="hidden md:block">
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
                         <div className="ml-4">
@@ -98,36 +93,36 @@ export default function WithdrawTable() {
                       </span>
                     </td>
                   </tr>
-                  <tr>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                  <tr className="">
+                    <td className="px-6 py-4 whitespace-nowrap hidden md:block">
                       <h1 className="underline decoration-sky-500 underline-offset-2 text-xl text-gray-500 font-semibold md:flex md:items-center">
                         Name :
                       </h1>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <input
-                        className="border-2 p-2 h-12 w-56 border-slate-300"
+                        className="border-2  w-full  md:w-56 px-1 h-12 border-slate-300"
                         type="text"
                         defaultValue={user.displayName}
                         name="name"
                         ref={nameRef}
                       />
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-6 py-4 whitespace-nowrap hidden md:block">
                       <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                         Active
                       </span>
                     </td>
                   </tr>
                   <tr>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-6 py-4 whitespace-nowrap hidden md:block">
                       <h1 className="underline decoration-sky-500 underline-offset-2 text-xl text-gray-500 font-semibold md:flex md:items-center">
                         Email:
                       </h1>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <input
-                        className="border-2 p-2 h-12 w-56 border-slate-300"
+                        className="border-2 h-12  w-full  md:w-56 px-1 border-slate-300"
                         type="email"
                         defaultValue={user.email}
                         name="email"
@@ -139,14 +134,14 @@ export default function WithdrawTable() {
                         errors={state.errors}
                       />
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-6 py-4 whitespace-nowrap hidden md:block">
                       <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                         Active
                       </span>
                     </td>
                   </tr>
                   <tr>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-6 py-4 whitespace-nowrap hidden md:block">
                       <h1 className="underline decoration-sky-500 underline-offset-2 text-xl text-gray-500 font-semibold md:flex md:items-center">
                         Wallet:
                       </h1>
@@ -158,7 +153,7 @@ export default function WithdrawTable() {
                           money.walletAddress ? (
                             <input
                               key={money.email}
-                              className="border-2 p-3 w-56 px-1 h-12 border-slate-300"
+                              className="border-2 p-3  w-full  md:w-56 px-1 h-12 border-slate-300"
                               type="text"
                               defaultValue={money.walletAddress}
                               name="address"
@@ -166,16 +161,13 @@ export default function WithdrawTable() {
                               ref={addressRef}
                             />
                           ) : (
-                            <p
-                              key={money.email}
-                              className="text-white bg-red-500 rounded-lg pl-4 py-2 w-72"
-                            >
+                            <p className="text-white bg-red-500 rounded-lg pl-4 py-2 w-72">
                               You have to add WalletAddress first
                             </p>
                           )
                         )}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-6 py-4 whitespace-nowrap hidden md:block">
                       <Link
                         to="/wallet-address"
                         className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full  text-blue-500 hover:text-blue-600"
@@ -185,29 +177,28 @@ export default function WithdrawTable() {
                     </td>
                   </tr>
                   <tr>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-6 py-4 whitespace-nowrap hidden md:block">
                       <h1 className="underline decoration-sky-500 underline-offset-2 text-xl text-gray-500 font-semibold md:flex md:items-center">
                         Withdraw:
                       </h1>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <input
-                        className="border-2 p-2 h-12 w-56 border-slate-300"
+                        className="border-2 h-12  w-full  md:w-56 px-1 border-slate-300"
                         type="text"
-                        placeholder="Withdraw Amount"
-                        name="amount"
+                        placeholder="Withdraw Amount" name="amount"
                         required
                         ref={amountRef}
                       />
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-500 text-white">
-                        20% will be cut from the amount
+                    <td className="px-6 py-4 whitespace-nowrap hidden md:block">
+                      <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                        Enter Withdraw Amount
                       </span>
                     </td>
                   </tr>
                   <tr>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-6 py-4 whitespace-nowrap hidden md:block">
                       <h1 className="underline decoration-sky-500 underline-offset-2 text-xl text-gray-500 font-semibold md:flex md:items-center">
                         Balance:
                       </h1>
@@ -219,7 +210,7 @@ export default function WithdrawTable() {
                           money.balance ? (
                             <input
                               key={money.email}
-                              className="border-2 h-12 border-slate-300 p-2 w-56"
+                              className="border-2  w-full  md:w-56 px-1 h-12 border-slate-300"
                               type="text"
                               name="balance"
                               defaultValue={money.balance}
@@ -229,7 +220,7 @@ export default function WithdrawTable() {
                           ) : (
                             <input
                               key={money.email}
-                              className="border-2 p-2 h-12 border-slate-300 w-56"
+                              className="border-2 w-full  md:w-56 px-1 h-12 border-slate-300 "
                               type="text"
                               name="balance"
                               defaultValue="0"
@@ -239,7 +230,7 @@ export default function WithdrawTable() {
                           )
                         )}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-6 py-4 whitespace-nowrap hidden md:block">
                       <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                         Your current balance
                       </span>
@@ -250,28 +241,28 @@ export default function WithdrawTable() {
             </div>
           </div>
         </div>
-        {/* {money
-					.filter((money) => money.email === user.email)
-					.map((money) =>
-						money.balance ? ( */}
-        <button type="submit" key={money.email}>
-          <input
-            className="bg-black text-white w-28 mt-4 ml-5 px-3 py-2 font-header font-bold rounded-lg cursor-pointer focus:bg-white focus:border-black focus:text-black"
-            value="Withdraw"
-            type="submit"
-          />
-        </button>
-        {/* ) : ( */}
-        {/* <button
-								type='submit'
-								key={money.email}
-								className='w-28 mt-4 ml-5 px-3 py-2 font-header font-bold rounded-lg cursor-pointer border-2 border-black text-gray-400'
-								disabled
-							>
-								Withdraw
-							</button>
-						)
-					)} */}
+
+        {/* ------------------------------------------------------------ */}
+        {money
+          .filter((money) => money.email === user.email)
+          .map((money) =>
+            money.walletAddress ? (
+              <button key={money.email}>
+                <input
+                  className="bg-black text-white w-28 mt-4 ml-5 px-3 py-2 font-header font-bold rounded-lg cursor-pointer focus:bg-white focus:border-black focus:text-black"
+                  value="Withdraw"
+                  type="submit"
+                />
+              </button>
+            ) : (
+              <button key={money.email}
+                className="w-28 mt-4 ml-5 px-3 py-2 font-header font-bold rounded-lg cursor-pointer border-2 border-black text-gray-400"
+                disabled
+              >
+                Withdraw
+              </button>
+            )
+          )}
       </form>
     </div>
   );

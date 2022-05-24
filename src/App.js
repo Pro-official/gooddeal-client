@@ -17,72 +17,72 @@ import ApproveWithdraw from "./pages/Approve/ApproveWithdraw";
 import ApproveDeposit from "./pages/Approve/ApproveDeposit";
 
 function App() {
-	return (
-		<div className='App'>
-			<AuthProvider>
-				<BrowserRouter>
-					<Switch>
-						<Route exact path='/' component={Signup} />
-					</Switch>
-					<Switch>
-						<Route exact path='/signup' component={Signup} />
-					</Switch>
-					<Switch>
-						<PrivateRoute exact path='/home'>
-							<Home />
-						</PrivateRoute>
-					</Switch>
-					<Switch>
-						<Route exact path='/login' component={Signin} />
-					</Switch>
-					<Switch>
-						<Route exact path='/approve-withdraw' component={ApproveWithdraw} />
-					</Switch>
-					<Switch>
-						<Route exact path='/approve-deposit' component={ApproveDeposit} />
-					</Switch>
-					<Switch>
-						<PrivateRoute exact path='/transfer'>
-							<Transfer />
-						</PrivateRoute>
-					</Switch>
-					<Switch>
-						<PrivateRoute exact path='/deposit'>
-							<Deposit />
-						</PrivateRoute>
-					</Switch>
-					<Switch>
-						<PrivateRoute exact path='/withdraw'>
-							<Withdraw />
-						</PrivateRoute>
-					</Switch>
-					<Switch>
-						<PrivateRoute exact path='/account'>
-							<Account />
-						</PrivateRoute>
-						<PrivateRoute exact path='/dashboard'>
-							<Dashboard />
-						</PrivateRoute>
-					</Switch>
-					<Switch>
-						<PrivateRoute exact path='/fund-password'>
-							<FundPassword />
-						</PrivateRoute>
-					</Switch>
-					<Switch>
-						<PrivateRoute exact path='/bank-card'>
-							<BankCard />
-						</PrivateRoute>
-					</Switch>
-					<Switch>
-						<PrivateRoute exact path='/wallet-address'>
-							<WalletAddress />
-						</PrivateRoute>
-					</Switch>
-				</BrowserRouter>
-			</AuthProvider>
-		</div>
-	);
+  return (
+    <div className="App">
+      <AuthProvider>
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/" component={Signup} />
+          </Switch>
+          <Switch>
+            <Route exact path="/signup" component={Signup} />
+          </Switch>
+          <Switch>
+            <PrivateRoute exact path="/home">
+              <Home />
+            </PrivateRoute>
+          </Switch>
+          <Switch>
+            <Route exact path="/login" component={Signin} />
+          </Switch>
+          <Switch>
+            <Route exact path="/approve-withdraw" component={ApproveWithdraw} />
+          </Switch>
+          <Switch>
+            <Route exact path="/approve-deposit" component={ApproveDeposit} />
+          </Switch>
+          <Switch>
+            <PrivateRoute exact path="/transfer">
+              <Transfer />
+            </PrivateRoute>
+          </Switch>
+          <Switch>
+            <PrivateRoute exact path="/deposit">
+              <Deposit />
+            </PrivateRoute>
+          </Switch>
+          <Switch>
+            <PrivateRoute exact path="/withdraw">
+              <Withdraw />
+            </PrivateRoute>
+          </Switch>
+          <Switch>
+            <PrivateRoute exact path="/account">
+              <Account />
+            </PrivateRoute>
+            <PrivateRoute exact path="/dashboard">
+              <Dashboard />
+            </PrivateRoute>
+          </Switch>
+          <Switch>
+            <PrivateRoute exact path="/fund-password">
+              <FundPassword />
+            </PrivateRoute>
+          </Switch>
+          <Switch>
+            <PrivateRoute exact path="/bank-card">
+              <BankCard />
+            </PrivateRoute>
+          </Switch>
+          <Switch>
+            <PrivateRoute exact path="/wallet-address">
+              <WalletAddress />
+            </PrivateRoute>
+          </Switch>
+        </BrowserRouter>
+      </AuthProvider>
+    </div>
+  );
 }
 
 export default App;
