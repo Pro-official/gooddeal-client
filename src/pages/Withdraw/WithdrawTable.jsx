@@ -3,6 +3,7 @@ import useAuth from "../../Hooks/useAuth";
 import { useForm, ValidationError } from "@formspree/react";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
+import "../Deposit/TableStyle.css";
 
 export default function WithdrawTable() {
   const history = useHistory();
@@ -49,7 +50,7 @@ export default function WithdrawTable() {
           <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
             <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
               <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50 hidden md:block">
+                <thead className="bg-gray-50 tableBody">
                   <tr>
                     <th
                       scope="col"
@@ -71,8 +72,8 @@ export default function WithdrawTable() {
                     </th>
                   </tr>
                 </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
-                  <tr className="hidden md:block">
+                <tbody className="bg-white divide-y divide-gray-200 ">
+                  <tr className="amountRow">
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
                         <div className="ml-4">

@@ -31,7 +31,7 @@ const Account = () => {
 				<h1 className='text-3xl md:text-4xl font-bold font-header'>
 					View Your <Span>Account</Span>
 				</h1>
-				<div className='md:max-w-5xl mx-auto shadow-lg hover:shadow-xl mt-10 py-8 px-4 md:flex md:items-center md:justify-center'>
+				<div className='md:max-w-5xl mx-auto hover:shadow-xl mt-10 py-8 px-4 md:flex md:items-center md:justify-center'>
 					<img
 						className='rounded-full w-40 md:mr-20'
 						src={user.photoURL}
@@ -66,6 +66,7 @@ const Account = () => {
 					</div>
 				</div>
 			</div>
+			<hr />
 			<Options />
 		</>
 	);

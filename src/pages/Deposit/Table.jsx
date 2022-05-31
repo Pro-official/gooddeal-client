@@ -3,6 +3,7 @@ import useAuth from "../../Hooks/useAuth";
 import { useForm, ValidationError } from "@formspree/react";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
+import "./TableStyle.css";
 
 export default function Example() {
   const history = useHistory();
@@ -22,15 +23,13 @@ export default function Example() {
 
   const [state, handleSubmit] = useForm("mnqwbbez");
   if (state.succeeded) {
-      history.push("/home");
+    history.push("/home");
   }
   return (
     <div className="flex flex-col mt-8 md:max-w-3xl">
-      <form
-        onSubmit={handleSubmit}
-      >
+      <form onSubmit={handleSubmit}>
         <h1 className="text-xl -mt-4 mb-2 font-semibold md:flex text-center items-center">
-          <span className="underline text-base text-gray-500 decoration-sky-500 underline-offset-2">
+          <span className="underline text-base md:text-lg text-gray-500 decoration-sky-500 underline-offset-2">
             Deposit Method:
           </span>
           <p className="text-gray-500 text-base mt-2 md:ml-1 -ml-6">
@@ -47,7 +46,7 @@ export default function Example() {
           <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
             <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
               <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50 hidden md:block">
+                <thead className="bg-gray-50 tableBody">
                   <tr>
                     <th
                       scope="col"
@@ -70,7 +69,7 @@ export default function Example() {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                  <tr className="hidden md:block">
+                  <tr className="amountRow">
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
                         <div className="ml-4">
@@ -184,7 +183,8 @@ export default function Example() {
                       <input
                         className="border-2 h-12  w-full  md:w-56 px-1 border-slate-300"
                         type="text"
-                        placeholder="Deposit Amount" name="amount"
+                        placeholder="Deposit Amount"
+                        name="amount"
                         required
                         ref={amountRef}
                       />
@@ -253,7 +253,8 @@ export default function Example() {
                 />
               </button>
             ) : (
-              <button key={money.email}
+              <button
+                key={money.email}
                 className="w-28 mt-4 ml-5 px-3 py-2 font-header font-bold rounded-lg cursor-pointer border-2 border-black text-gray-400"
                 disabled
               >

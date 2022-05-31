@@ -15,6 +15,7 @@ import Signup from "./pages/Registration/Signup";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import ApproveWithdraw from "./pages/Approve/ApproveWithdraw";
 import ApproveDeposit from "./pages/Approve/ApproveDeposit";
+import Notfound from "./Notfound";
 
 function App() {
   return (
@@ -23,58 +24,35 @@ function App() {
         <BrowserRouter>
           <Switch>
             <Route exact path="/" component={Signup} />
-          </Switch>
-          <Switch>
             <Route exact path="/signup" component={Signup} />
-          </Switch>
-          <Switch>
+            {/* <Route path="*" exact={true} component={Notfound} /> */}
             <PrivateRoute exact path="/home">
               <Home />
             </PrivateRoute>
-          </Switch>
-          <Switch>
             <Route exact path="/login" component={Signin} />
-          </Switch>
-          <Switch>
             <Route exact path="/approve-withdraw" component={ApproveWithdraw} />
-          </Switch>
-          <Switch>
             <Route exact path="/approve-deposit" component={ApproveDeposit} />
-          </Switch>
-          <Switch>
             <PrivateRoute exact path="/transfer">
               <Transfer />
             </PrivateRoute>
-          </Switch>
-          <Switch>
             <PrivateRoute exact path="/deposit">
               <Deposit />
             </PrivateRoute>
-          </Switch>
-          <Switch>
             <PrivateRoute exact path="/withdraw">
               <Withdraw />
             </PrivateRoute>
-          </Switch>
-          <Switch>
             <PrivateRoute exact path="/account">
               <Account />
             </PrivateRoute>
             <PrivateRoute exact path="/dashboard">
               <Dashboard />
             </PrivateRoute>
-          </Switch>
-          <Switch>
             <PrivateRoute exact path="/fund-password">
               <FundPassword />
             </PrivateRoute>
-          </Switch>
-          <Switch>
             <PrivateRoute exact path="/bank-card">
               <BankCard />
             </PrivateRoute>
-          </Switch>
-          <Switch>
             <PrivateRoute exact path="/wallet-address">
               <WalletAddress />
             </PrivateRoute>
