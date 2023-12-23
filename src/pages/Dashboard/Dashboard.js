@@ -13,7 +13,7 @@ const Dashboard = () => {
   const emailRef = useRef();
 
   useEffect(() => {
-    fetch("https://dry-peak-78703.herokuapp.com/users")
+    fetch("https://gooddeal-server.onrender.com/users")
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, []);

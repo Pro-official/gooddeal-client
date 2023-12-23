@@ -22,16 +22,14 @@ export default function WithdrawTable() {
   }
 
   useEffect(() => {
-    fetch("https://dry-peak-78703.herokuapp.com/users")
+    fetch("https://gooddeal-server.onrender.com/users")
       .then((res) => res.json())
       .then((data) => setMoney(data));
   }, []);
 
   return (
     <div className="flex flex-col mt-8 md:max-w-3xl">
-      <form
-        onSubmit={handleSubmit}
-      >
+      <form onSubmit={handleSubmit}>
         <h1 className="text-xl -mt-4 mb-2 font-semibold md:flex text-center items-center">
           <span className="underline text-base text-gray-500 decoration-sky-500 underline-offset-2">
             Withdraw Method:
@@ -187,7 +185,8 @@ export default function WithdrawTable() {
                       <input
                         className="border-2 h-12  w-full  md:w-56 px-1 border-slate-300"
                         type="text"
-                        placeholder="Withdraw Amount" name="amount"
+                        placeholder="Withdraw Amount"
+                        name="amount"
                         required
                         ref={amountRef}
                       />
@@ -256,7 +255,8 @@ export default function WithdrawTable() {
                 />
               </button>
             ) : (
-              <button key={money.email}
+              <button
+                key={money.email}
                 className="w-28 mt-4 ml-5 px-3 py-2 font-header font-bold rounded-lg cursor-pointer border-2 border-black text-gray-400"
                 disabled
               >

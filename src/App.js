@@ -15,7 +15,7 @@ import Signup from "./pages/Registration/Signup";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import ApproveWithdraw from "./pages/Approve/ApproveWithdraw";
 import ApproveDeposit from "./pages/Approve/ApproveDeposit";
-import Notfound from "./Notfound";
+// import Notfound from "./Notfound";
 
 function App() {
   return (

@@ -19,9 +19,8 @@ const ApproveDeposit = () => {
     const updatedBalance = (balance * 1) / 100;
     const upBalance = parseFloat(balance) + parseFloat(updatedBalance);
     const depositData = { email, newBalance, upBalance, name };
-    console.log(depositData);
 
-    fetch(`https://dry-peak-78703.herokuapp.com/deposit/${email}`, {
+    fetch(`https://gooddeal-server.onrender.com/deposit/${email}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
