@@ -67,7 +67,7 @@ const Approve = () => {
         </div>
         <div className="flex flex-col pt-4">
           <div className="flex ">
-            <span className=" inline-flex  items-center px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
+            <span className="inline-flex items-center px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
               <svg
                 width="15"
                 height="15"
